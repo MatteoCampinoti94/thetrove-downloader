@@ -84,6 +84,7 @@ def download(url: str, folder: str, output: str = ""):
     global download_flag, whitelist, blacklist
 
     output = output if output else unquote(url.strip("/").split("/")[-1])
+    output = output.rstrip("/") + "/" * url.endswith("/")
     path: str = join(folder, output)
     path_url: str = unquote(urlparse(url).path)
     depth: int = folder.strip("/").count("/") + 1 if folder else 0
