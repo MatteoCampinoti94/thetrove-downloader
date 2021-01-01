@@ -56,6 +56,10 @@ def print_indent(indent: int, message: str = "", style: str = ""):
     console.print("| " * (indent - 1), "|-" * bool(indent > 0 and message), f"[{style}]{message}[/{style}]", sep="")
 
 
+def check_url(url: str) -> str:
+    return request("GET", url, stream=True).request.url
+
+
 def download_file(url: str, dest: str):
     try:
         with Progress(*progress_columns, transient=True) as progress:
@@ -152,7 +156,7 @@ def main(*args: str):
     for instruction in instructions:
         whitelist = compile_pattern(instruction["whitelist"], flags=IGNORECASE) if instruction["whitelist"] else None
         blacklist = compile_pattern(instruction["blacklist"], flags=IGNORECASE) if instruction["blacklist"] else None
-        download(urljoin(root, quote(instruction["target"])), instruction["folder"], instruction["output"])
+        download(check_url(urljoin(root, quote(instruction["target"]))), instruction["folder"], instruction["output"])
 
 
 def __main__():
