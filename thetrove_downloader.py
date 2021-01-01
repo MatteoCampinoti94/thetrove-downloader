@@ -156,9 +156,11 @@ def main(*args: str):
     instructions = [instruction_new] if instruction_new else instructions
 
     for inst in instructions:
+        console.print(inst) if len(instructions) > 1 else None
         whitelist = compile_pattern(inst["whitelist"], flags=IGNORECASE) if inst["whitelist"] else None
         blacklist = compile_pattern(inst["blacklist"], flags=IGNORECASE) if inst["blacklist"] else None
         download(check_url(urljoin(root, quote(inst["target"]))), f if (f := inst["folder"]) else ".", inst["output"])
+        print()
 
 
 def __main__():
