@@ -133,7 +133,7 @@ def main(*args: str):
     download_flag = not args_parsed.no_download
 
     instruction_new: dict[str, str] = {
-        "target": args_parsed.target,
+        "target": args_parsed.target.removeprefix(root),
         "folder": args_parsed.folder if args_parsed.folder else ".",
         "output": args_parsed.output,
         "blacklist": args_parsed.blacklist,
