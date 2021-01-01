@@ -149,6 +149,7 @@ def main(*args: str):
         instructions = load(open(args_parsed.json, "r")) if isfile(args_parsed.json) else []
         if instruction_new and instruction_new not in instructions:
             instructions.append(instruction_new)
+            instructions.sort(key=lambda i: i["target"])
             dump(instructions, open(args_parsed.json, "w"), indent=2)
 
     instructions = [instruction_new] if instruction_new else instructions
