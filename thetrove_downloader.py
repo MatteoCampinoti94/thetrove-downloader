@@ -171,7 +171,7 @@ def __main__():
     except SystemExit as exit_:
         raise exit_
     except (Exception, BaseException):
-        Console().print_exception()
+        console.print_exception()
 
 
 if __name__ == '__main__':
