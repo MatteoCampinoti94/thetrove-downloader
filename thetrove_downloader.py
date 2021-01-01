@@ -138,7 +138,7 @@ def main(*args: str):
 
     instruction_new: dict[str, str] = {
         "target": args_parsed.target.removeprefix(root),
-        "folder": args_parsed.folder if args_parsed.folder else ".",
+        "folder": args_parsed.folder,
         "output": args_parsed.output,
         "blacklist": args_parsed.blacklist,
         "whitelist": args_parsed.whitelist,
@@ -154,10 +154,10 @@ def main(*args: str):
 
     instructions = [instruction_new] if instruction_new else instructions
 
-    for instruction in instructions:
-        whitelist = compile_pattern(instruction["whitelist"], flags=IGNORECASE) if instruction["whitelist"] else None
-        blacklist = compile_pattern(instruction["blacklist"], flags=IGNORECASE) if instruction["blacklist"] else None
-        download(check_url(urljoin(root, quote(instruction["target"]))), instruction["folder"], instruction["output"])
+    for inst in instructions:
+        whitelist = compile_pattern(inst["whitelist"], flags=IGNORECASE) if inst["whitelist"] else None
+        blacklist = compile_pattern(inst["blacklist"], flags=IGNORECASE) if inst["blacklist"] else None
+        download(check_url(urljoin(root, quote(inst["target"]))), f if (f := inst["folder"]) else ".", inst["output"])
 
 
 def __main__():
