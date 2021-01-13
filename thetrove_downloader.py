@@ -66,13 +66,13 @@ def print_indent(indent: int, message: str = "", style: str = ""):
 
 
 def check_url(url: str) -> str:
-    return request("GET", url, stream=True).request.url
+    return request("GET", url, stream=True, headers={"User-Agent": user_agent}).request.url
 
 
 def download_file(url: str, dest: str):
     try:
         with Progress(*progress_columns, transient=True) as progress:
-            stream: Response = request("GET", url, stream=True)
+            stream: Response = request("GET", url, stream=True, headers={"User-Agent": user_agent})
             size: int = int(stream.headers.get("Content-Length", 0))
             task: TaskID = progress.add_task("", total=size if size else 1)
             makedirs(dirname(dest), exist_ok=True)
@@ -110,7 +110,8 @@ def download(url: str, folder: str, output: str = ""):
     if not url.endswith("/"):
         download_file(url, path) if download_flag and not isfile(path) else None
     else:
-        page: BeautifulSoup = BeautifulSoup(request("GET", url, verify=False).text, "lxml")
+        res: Response = request("GET", url, verify=False, headers={"User-Agent": user_agent})
+        page: BeautifulSoup = BeautifulSoup(res.text, "lxml")
         elements: list[Tag] = [a for td in page.findAll("td", {"class": "link"})[1:] for a in td.findAll("a")]
         for a in elements:
             download(urljoin(url, a["href"]), path)
