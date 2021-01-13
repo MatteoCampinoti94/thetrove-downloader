@@ -52,6 +52,10 @@ console: Console = Console(theme=Theme({
 disable_warnings(InsecureRequestWarning)
 
 
+class NoRoot(Exception):
+    pass
+
+
 def print_indent(indent: int, message: str = "", style: str = ""):
     console.print("| " * (indent - 1), "|-" * bool(indent > 0 and message), f"[{style}]{message}[/{style}]", sep="")
 
@@ -159,7 +163,10 @@ def main(*args: str):
         console.print(inst) if len(instructions) > 1 else None
         whitelist = compile_pattern(inst["whitelist"], flags=IGNORECASE) if inst["whitelist"] else None
         blacklist = compile_pattern(inst["blacklist"], flags=IGNORECASE) if inst["blacklist"] else None
-        download(check_url(urljoin(root, quote(inst["target"]))), f if (f := inst["folder"]) else ".", inst["output"])
+        target: str = check_url(urljoin(root, quote(inst["target"])))
+        if (d := urlparse(target).path.rstrip("/").count("/")) < 2:
+            raise NoRoot(f"Cannot download targets with a depth lower than 2: {target} {d}")
+        download(target, f if (f := inst["folder"]) else ".", inst["output"])
         print()
 
 
