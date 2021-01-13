@@ -9,6 +9,8 @@ from os import remove
 from os.path import dirname
 from os.path import isfile
 from os.path import join
+from platform import python_version
+from platform import uname
 from re import IGNORECASE
 from re import Pattern
 from re import compile as compile_pattern
@@ -33,7 +35,9 @@ from rich.theme import Theme
 from urllib3 import disable_warnings
 from urllib3.exceptions import InsecureRequestWarning
 
+__version__: str = "1.0.0"
 root: str = "https://thetrove.is"
+user_agent: str = f"thetrove-downloader/{__version__} Python/{python_version} {(u := uname()).system}/{u.release}"
 download_flag: bool = True
 blacklist: Optional[Pattern] = None
 whitelist: Optional[Pattern] = None
@@ -130,11 +134,16 @@ def main(*args: str):
                              help="regex whitelist for files/folders, overrides blacklist")
     args_parser.add_argument("-n, --nodownload", dest="no_download", default=False, action="store_true", required=False,
                              help="list content without downloading")
+    args_parser.add_argument("-v, --version", dest="version", default=False, action="store_true", required=False,
+                             help="show version")
 
     args_parsed: Namespace = args_parser.parse_args(args)
 
     if all(not arg for arg in vars(args_parsed).values()):
         args_parser.print_help()
+        exit(0)
+    elif args_parsed.version:
+        print(__version__)
         exit(0)
     elif not (args_parsed.target or args_parsed.json):
         args_parser.error("at least one of the following arguments is required: -t, --target, -j, --json")
