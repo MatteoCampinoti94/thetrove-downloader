@@ -23,6 +23,7 @@ from urllib.parse import urljoin
 from urllib.parse import urlparse
 
 from bs4 import BeautifulSoup
+from bs4.element import Tag
 from requests import Response
 from requests import request
 from rich.console import Console
@@ -110,7 +111,7 @@ def download(url: str, folder: str, output: str = ""):
         download_file(url, path) if download_flag and not isfile(path) else None
     else:
         page: BeautifulSoup = BeautifulSoup(request("GET", url, verify=False).text, "lxml")
-        elements: list[url] = [a for td in page.findAll("td", {"class": "link"})[1:] for a in td.findAll("a")]
+        elements: list[Tag] = [a for td in page.findAll("td", {"class": "link"})[1:] for a in td.findAll("a")]
         for a in elements:
             download(urljoin(url, a["href"]), path)
 
