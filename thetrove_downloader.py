@@ -38,7 +38,7 @@ from urllib3.exceptions import InsecureRequestWarning
 
 __version__: str = "1.0.0"
 root: str = "https://thetrove.is"
-user_agent: str = f"thetrove-downloader/{__version__} Python/{python_version} {(u := uname()).system}/{u.release}"
+user_agent: str = f"thetrove-downloader/{__version__} Python/{python_version()} {(u := uname()).system}/{u.release}"
 download_flag: bool = True
 blacklist: Optional[Pattern] = None
 whitelist: Optional[Pattern] = None
