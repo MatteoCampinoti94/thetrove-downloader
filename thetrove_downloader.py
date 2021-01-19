@@ -136,6 +136,8 @@ def main(*args: str):
                              help="regex whitelist for files/folders, overrides blacklist")
     args_parser.add_argument("-n, --nodownload", dest="no_download", default=False, action="store_true", required=False,
                              help="list content without downloading")
+    args_parser.add_argument("--no-preserve-root", dest="no_preserve_root", default=False, action="store_true", required=False,
+                             help="allow download of root folders")
     args_parser.add_argument("-v, --version", dest="version", default=False, action="store_true", required=False,
                              help="show version")
 
@@ -175,7 +177,7 @@ def main(*args: str):
         whitelist = compile_pattern(inst["whitelist"], flags=IGNORECASE) if inst["whitelist"] else None
         blacklist = compile_pattern(inst["blacklist"], flags=IGNORECASE) if inst["blacklist"] else None
         target: str = check_url(urljoin(root, quote(inst["target"])))
-        if (d := urlparse(target).path.rstrip("/").count("/")) < 2:
+        if not args_parsed.no_preserve_root and (d := urlparse(target).path.rstrip("/").count("/")) < 2:
             raise NoRoot(f"Cannot download targets with a depth lower than 2: {target} {d}")
         download(target, f if (f := inst["folder"]) else ".", inst["output"])
         print()
