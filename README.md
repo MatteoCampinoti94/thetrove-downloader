@@ -37,7 +37,7 @@ thetrove-downloader [-h] [-t, --target TARGET] [-j, --json JSON]
 * `-h, --help` show help message
 
 * `-t, --target <TARGET>` download target (folder or file)<br>
-  To download a specific resource, start the program with the `--target` command and supply a valid path (e.g. `Books/White Star`).
+  To download a specific resource, start the program with the `--target` command and supply a valid path (e.g. "Books/White Star").
 
 * `-j, --json <JSON>` save/read instructions from a JSON file<br>
   The `--json` option allows to specify a file to save the target, folder, output, whitelist, and blacklist instructions in JSON format. Launching the program with only the `--json` option will load the instructions previously saved in the file and perform all of them in succession. This can be used to keep a local copy of specific resources up to date.
