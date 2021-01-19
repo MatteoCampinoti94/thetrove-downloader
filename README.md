@@ -31,7 +31,8 @@ python3 -m pip install --upgrade thetrove-downloader
 thetrove-downloader [-h] [-t, --target TARGET] [-j, --json JSON]
                            [-f, --folder FOLDER] [-o, --output OUTPUT]
                            [-b, --blacklist BLACKLIST]
-                           [-w, --whitelist WHITELIST] [-n, --nodownload]
+                           [-w, --whitelist WHITELIST] [--no-download]
+                           [--no-preserve-root]
 ```
 
 * `-h, --help` show help message
