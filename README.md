@@ -49,16 +49,16 @@ thetrove-downloader [-h] [-t, --target TARGET] [-j, --json JSON]
   The `--output` option allows to override the folder/file name of the resource. Note that if the targeted resource is a folder, the option will only apply to the top-level folder and leave all contents therein unaltered.
 
 * `-b, --blacklist <BLACKLIST>` regex blacklist for files/folders<br>
-  The `--whitelist` options allows to specify a regex pattern that will be used to skip files and folder that do not contain the supplied pattern. Overwrites blacklist options.
+  The `--whitelist` option allows to specify a regex pattern that will be used to skip files and folder that do not contain the supplied pattern. Overwrites blacklist options.
 
 * `-w, --whitelist <WHITELIST>` regex whitelist for files/folders, overrides blacklist<br>
-  The `--whitelist` options allows to specify a regex pattern that will be used to skip files and folder that do not contain the supplied pattern. Overwrites blacklist options.
+  The `--whitelist` option allows to specify a regex pattern that will be used to skip files and folder that do not contain the supplied pattern. Overwrites blacklist options.
 
 * `-n, --nodownload` list content without downloading<br>
-  The `--nodownload` options allows to list the content under the supplied target without performing any download. The instructions will still be saved in a JSON file if the `--json` options is used.
+  The `--nodownload` flag allows to list the content under the supplied target without performing any download. The instructions will still be saved in a JSON file if the `--json` options is used.
   
 * `--no-preserve-root` allow download of root folders<br>
-  The `--no-preserve-root` option allows downloading entire root folders such as "/Books/". This option is not preserved with the `--json` option and must be passed manually every time.
+  The `--no-preserve-root` flag allows downloading entire root folders such as "/Books/". This option is not preserved with the `--json` option and must be passed manually every time.
 
 _**NOTE**_: the program requires to use either `--target`, `--json`, or both `--target` and `--json`. Without one of these combinations the program won't have a valid download instruction.
 
