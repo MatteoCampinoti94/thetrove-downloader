@@ -54,7 +54,7 @@ thetrove-downloader [-h] [-t, --target TARGET] [-j, --json JSON]
 * `-w, --whitelist <WHITELIST>` regex whitelist for files/folders, overrides blacklist<br>
   The `--whitelist` option allows to specify a regex pattern that will be used to skip files and folder that do not contain the supplied pattern. Overwrites blacklist options.
 
-* `-n, --no-download` list content without downloading<br>
+* `--no-download` list content without downloading<br>
   The `--no-download` flag allows to list the content under the supplied target without performing any download. The instructions will still be saved in a JSON file if the `--json` options is used.
   
 * `--no-preserve-root` allow download of root folders<br>
