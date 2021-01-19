@@ -67,3 +67,5 @@ _**NOTE**_: the program requires to use either `--target`, `--json`, or both `--
 The program performs all GET requests without throttling or delay and with no disallowed paths as per the instructions at [thetrove.is/robots.txt](https://thetrove.is/robots.txt).
 
 However, please do take care to not overuse this utility and risk overwhelming their connection. Thank you.
+
+Root folders such as "/Books" are protected and cannot be downloaded without using the `--no-preserve-root` flag.
