@@ -36,7 +36,7 @@ from rich.theme import Theme
 from urllib3 import disable_warnings
 from urllib3.exceptions import InsecureRequestWarning
 
-__version__: str = "1.0.0"
+__version__: str = "1.0.2"
 root: str = "https://thetrove.is"
 user_agent: str = f"thetrove-downloader/{__version__} Python/{python_version()} {(u := uname()).system}/{u.release}"
 download_flag: bool = True
