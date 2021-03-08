@@ -174,12 +174,12 @@ def main(*args: str):
 
     for inst in instructions:
         console.print(inst) if len(instructions) > 1 else None
-        whitelist = compile_pattern(inst["whitelist"], flags=IGNORECASE) if inst["whitelist"] else None
-        blacklist = compile_pattern(inst["blacklist"], flags=IGNORECASE) if inst["blacklist"] else None
+        whitelist = compile_pattern(w, flags=IGNORECASE) if (w := inst.get("whitelist", "")) else None
+        blacklist = compile_pattern(b, flags=IGNORECASE) if (b := inst.get("blacklist", "")) else None
         target: str = check_url(urljoin(root, quote(inst["target"])))
-        if not args_parsed.no_preserve_root and (d := urlparse(target).path.rstrip("/").count("/")) < 2:
+        if (d := urlparse(target).path.rstrip("/").count("/")) < 2 and not args_parsed.no_preserve_root:
             raise NoRoot(f"Cannot download targets with a depth lower than 2: {target} {d}")
-        download(target, f if (f := inst["folder"]) else ".", inst["output"])
+        download(target, inst.get("folder", "."), inst.get("output", ""))
         print()
 
 
