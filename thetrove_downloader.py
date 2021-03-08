@@ -136,8 +136,8 @@ def main(*args: str):
                              help="regex whitelist for files/folders, overrides blacklist")
     args_parser.add_argument("--no-download", dest="no_download", default=False, action="store_true", required=False,
                              help="list content without downloading")
-    args_parser.add_argument("--no-preserve-root", dest="no_preserve_root", default=False, action="store_true", required=False,
-                             help="allow download of root folders")
+    args_parser.add_argument("--no-preserve-root", dest="no_preserve_root", default=False, action="store_true",
+                             required=False, help="allow download of root folders")
     args_parser.add_argument("-v, --version", dest="version", default=False, action="store_true", required=False,
                              help="show version")
 
