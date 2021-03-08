@@ -70,3 +70,15 @@ The program performs all GET requests without throttling or delay and with no di
 However, please do take care to not overuse this utility and risk overwhelming their connection. Thank you.
 
 Root folders such as "/Books" are protected and cannot be downloaded without using the `--no-preserve-root` flag.
+
+## Contributing
+
+All contributions and suggestions are welcome!
+
+If you have suggestions for fixes or improvements, you can open an issue with your idea, see [#Issues](#issues) for details.
+
+## Issues
+
+If you encounter any problem during usage of the program, an issue can be opened on the project's page on [GitLab](https://gitlab.com/MatteoCampinoti94/theteove-downloader/issues).
+
+When opening an issue for a problem, please copy the error message – if any – and describe the operation in progress when the error occurred.
