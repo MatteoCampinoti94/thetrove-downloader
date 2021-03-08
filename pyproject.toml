@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "thetrove-downloader"
-version = "1.0.1"
+version = "1.0.2"
 description = "Download utility for thetrove.is"
 authors = ["Matteo Campinoti <matteo.campinoti94@gmail.com>"]
 license = "EUPL-1.2"
