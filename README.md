@@ -58,7 +58,7 @@ thetrove-downloader [-h] [-t, --target TARGET] [-j, --json JSON]
 * `--no-download` list content without downloading<br>
   The `--no-download` flag allows to list the content under the supplied target without performing any download. The instructions will still be saved in a JSON file if the `--json` options is used, but not the flag.
   
-* `--no-preserve-root` allow download of root folders<br>
+* `--no-preserve-root` allows the download of root folders<br>
   The `--no-preserve-root` flag allows downloading entire root folders such as "/Books/". This flag is not preserved with the `--json` option and must be passed manually every time.
 
 _**NOTE**_: the program requires to use either `--target`, `--json`, or both `--target` and `--json`. Without one of these combinations the program won't have a valid download instruction.
