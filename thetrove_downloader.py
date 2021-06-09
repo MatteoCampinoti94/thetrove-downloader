@@ -124,7 +124,7 @@ def main(*args: str):
 
     args_parser.add_argument("-t, --target", dest="target", default="", required=False,
                              help="download target (folder or file)")
-    args_parser.add_argument("--target-url", dest="target_url", default="", required=False,
+    args_parser.add_argument("--target-url", dest="url", default="", required=False,
                              help="download target (full URL to folder or file)")
     args_parser.add_argument("-j, --json", dest="json", default="", required=False,
                              help="save/read instructions from a JSON file")
@@ -151,11 +151,11 @@ def main(*args: str):
     elif args_parsed.version:
         print(__version__)
         exit(0)
-    elif not (args_parsed.target or args_parsed.target_url or args_parsed.json):
+    elif not (args_parsed.target or args_parsed.url or args_parsed.json):
         args_parser.error("at least one of the following arguments is required: -t, --target, --target-url, -j, --json")
 
     download_flag = not args_parsed.no_download
-    args_parsed.target = unquote(url if (url := args_parsed.target_url) != root else f"{root}/") or args_parsed.target
+    args_parsed.target = unquote(url if (url := args_parsed.url) != root else f"{root}/") or args_parsed.target
 
     instruction_new: dict[str, str] = {
         "target": args_parsed.target.removeprefix(root),
