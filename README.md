@@ -28,17 +28,21 @@ python3 -m pip install --upgrade thetrove-downloader
 ## Usage
 
 ```shell
-thetrove-downloader [-h] [-t, --target TARGET] [-j, --json JSON]
-                           [-f, --folder FOLDER] [-o, --output OUTPUT]
-                           [-b, --blacklist BLACKLIST]
-                           [-w, --whitelist WHITELIST] [--no-download]
-                           [--no-preserve-root]
+thetrove-downloader [-h] [-t, --target TARGET] [--target-url URL]
+                    [-j, --json JSON] [-f, --folder FOLDER]
+                    [-o, --output OUTPUT] [-b, --blacklist BLACKLIST]
+                    [-w, --whitelist WHITELIST] [--no-download]
+                    [--no-preserve-root]
 ```
 
 * `-h, --help` show help message
 
 * `-t, --target <TARGET>` download target (folder or file)<br>
   To download a specific resource, start the program with the `--target` command and supply a valid path (e.g. "Books/White Star").
+
+* `--target-url` download target (full URL to folder or file)<br>
+  Overrides `--target` argument with a full URL and sets the download target to the path of the URL (
+  e.g., "https://thetrove.is/Open%20Source/BIND%20RPG" to "Open Source/BIND RPG").
 
 * `-j, --json <JSON>` save/read instructions from a JSON file<br>
   The `--json` option allows to specify a file to save the target, folder, output, whitelist, and blacklist instructions in JSON format. Launching the program with only the `--json` option will load the instructions previously saved in the file and perform all of them in succession. This can be used to keep a local copy of specific resources up to date.
