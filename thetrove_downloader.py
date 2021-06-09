@@ -191,8 +191,8 @@ def __main__():
         main(*argv[1:])
     except KeyboardInterrupt:
         exit(130)
-    except SystemExit as exit_:
-        raise exit_
+    except SystemExit:
+        raise
     except (Exception, BaseException):
         console.print_exception()
 
