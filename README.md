@@ -1,3 +1,6 @@
+**ARCHIVED** This repository has been archived and all development has ceased. The thetrove.is website is permanently
+offline and there is no need for this program anymore.
+
 # thetrove-downloader
 
 [![version_pypi](https://img.shields.io/pypi/v/thetrove-downloader?logo=pypi)](https://pypi.org/project/thetrove-downloader/)
